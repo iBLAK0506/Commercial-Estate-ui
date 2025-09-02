@@ -1,0 +1,100 @@
+// 1. Define variables for consistent colors and styles
+:root {
+  --primary-color: teal;
+  --secondary-bg-color: #fcf5f3;
+  --border-color: #ccc;
+  --text-color: #333;
+  --form-element-padding: 15px;
+}
+
+.newPostPage {
+  height: 100%;
+  display: flex;
+
+  // 2. Add a media query for mobile responsiveness
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack elements vertically on small screens
+    overflow-y: scroll;
+  }
+
+  .formContainer {
+    flex: 3;
+    overflow-y: scroll;
+
+    .wrapper {
+      margin: 20px;
+
+      form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .item {
+          width: 48%; // Use ~48% to create a two-column layout
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 20px;
+
+          @media (max-width: 768px) {
+            width: 100%; // Make form items full-width on mobile
+          }
+
+          label {
+            color: var(--text-color);
+          }
+
+          input,
+          select {
+            padding: var(--form-element-padding);
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+          }
+
+          &.description {
+            width: 100%;
+            height: auto; // Allow height to adjust
+
+            .quill > .ql-container > .ql-editor {
+              height: 200px;
+              font-size: 16px;
+            }
+          }
+        }
+        .sendButton {
+          width: 100%; // Make the button full-width for better clickability
+          padding: var(--form-element-padding);
+          border-radius: 5px;
+          border: none;
+          background-color: var(--primary-color);
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: darkcyan;
+          }
+        }
+      }
+    }
+  }
+
+  .sideContainer {
+    flex: 2;
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 80%;
+      max-width: 250px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+}
