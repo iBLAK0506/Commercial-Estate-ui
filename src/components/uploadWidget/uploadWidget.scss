@@ -1,0 +1,14 @@
+.upload-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; // A nice blue color
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}

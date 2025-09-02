@@ -1,71 +1,125 @@
-@import "../../responsive.scss";
+// Define variables for consistent colors and styles
+:root {
+  --primary-color: teal;
+  --secondary-bg-color: #fcf5f3;
+  --border-color: #ccc;
+  --text-color: #333;
+  --form-element-padding: 15px;
+}
 
 .createPage {
+  // Renamed from .newPostPage to match component
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 100px); // Fill the screen height minus the navbar
 
-  form {
+  // Add a media query for mobile responsiveness
+  @media (max-width: 768px) {
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+
+  .formContainer {
+    flex: 3;
+    overflow-y: scroll;
+
+    .wrapper {
+      margin: 20px;
+
+      h1 {
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+
+      form {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .item {
+          width: 48%;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 20px;
+
+          @media (max-width: 768px) {
+            width: 100%;
+          }
+
+          label {
+            color: var(--text-color);
+          }
+
+          input,
+          select,
+          textarea {
+            padding: var(--form-element-padding);
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 16px;
+          }
+
+          textarea {
+            height: 150px;
+          }
+
+          &.description {
+            width: 100%;
+          }
+        }
+        .sendButton {
+          width: 100%;
+          padding: var(--form-element-padding);
+          border-radius: 5px;
+          border: none;
+          background-color: var(--primary-color);
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+          font-size: 16px;
+          margin-top: 10px;
+
+          &:hover {
+            background-color: darkcyan;
+          }
+        }
+
+        .error-message {
+          color: red;
+          width: 100%;
+          text-align: center;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  .sideContainer {
+    flex: 2;
+    background-color: var(--secondary-bg-color);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
-    max-width: 500px;
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
 
-    h1 {
-      font-weight: 300;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .item {
+    .image-previews {
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+      width: 100%;
 
-      label {
-        font-size: 14px;
-        color: #555;
-      }
-
-      input,
-      textarea {
-        padding: 15px;
-        border: 1px solid #ccc;
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
         border-radius: 5px;
-        font-size: 16px;
-        font-family: inherit;
+        border: 2px solid #ddd;
       }
-
-      textarea {
-        height: 120px;
-        resize: vertical;
-      }
-    }
-
-    .sendButton {
-      padding: 15px;
-      background-color: #fece51;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #fdd87a;
-      }
-    }
-
-    span {
-      color: red;
-      margin-top: 10px;
-      text-align: center;
     }
   }
 }
