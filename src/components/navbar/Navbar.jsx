@@ -45,14 +45,14 @@ function Navbar() {
         </div>
         {/* --- THIS IS THE FIX --- */}
         {/* The mobile menu links have been added below */}
-        <div className={menuOpen ? "menu active" : "menu"}>
+        {/* <div className={menuOpen ? "menu active" : "menu"}>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/agents">Agents</Link>
           {!currentUser && <Link to="/login">Sign in</Link>}
           {!currentUser && <Link to="/register">Sign up</Link>}
-        </div>
+        </div> */}
       </div>
     </nav>
   );
