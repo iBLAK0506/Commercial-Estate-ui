@@ -17,16 +17,11 @@ function UploadWidget({ onUploadSuccess }) {
       },
       function (error, result) {
         // This function is called after an upload action
-        if (!error && result && result.event === "close") {
-          // This event fires after the user closes the widget
-          // result.info.files contains an array of all uploaded files
-          if (result.info.files && result.info.files.length > 0) {
-            const uploadedUrls = result.info.files.map(
-              (file) => file.secure_url
-            );
-            // Send all the successful image URLs back to the CreatePage component
-            onUploadSuccess(uploadedUrls);
-          }
+        if (!error && result.event === "success") {
+          console.log(result.info.secure_url);
+
+          // Send all the successful image URLs back to the CreatePage component
+          onUploadSuccess([result.info.secure_url]);
         }
       }
     );

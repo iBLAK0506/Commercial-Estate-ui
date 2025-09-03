@@ -9,6 +9,8 @@ function CreatePage() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  console.log("House image", images);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -112,7 +114,9 @@ function CreatePage() {
       <div className="sideContainer">
         <h3>Upload Images</h3>
         <UploadWidget
-          onUploadSuccess={(uploadedUrls) => setImages(uploadedUrls)}
+          onUploadSuccess={(uploadedUrls) => {
+            setImages(uploadedUrls);
+          }}
         />
         <div className="image-previews">
           {images.map((img, index) => (
