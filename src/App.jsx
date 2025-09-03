@@ -11,6 +11,8 @@ import RequireAuth from "./routes/layout/requireAuth";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 // 1. Import the AboutPage component
 import AboutPage from "./routes/aboutPage/AboutPage";
+import ContactPage from "./routes/contactPage/contactPage";
+import AgentsPage from "./routes/agentsPage/AgentsPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +31,8 @@ function App() {
         // --- THIS IS THE FIX ---
         // 2. Add the new route for the About page
         { path: "/about", element: <AboutPage /> },
+        { path: "/contact", element: <ContactPage /> },
+        { path: "/agents", element: <AgentsPage /> },
 
         // --- PROTECTED ROUTES ---
         // These are guarded by the RequireAuth component
