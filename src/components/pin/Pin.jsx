@@ -7,10 +7,12 @@ function Pin({ item }) {
     <Marker position={[item.latitude, item.longitude]}>
       <Popup>
         <div className="popupContainer">
-          <img src={item.img} alt="" />
+          {/* Use the first image from the images array */}
+          <img src={item.images[0]} alt={item.title} />
           <div className="textContainer">
-            <Link to={`/${item.id}`}>{item.title}</Link>
-            <span>{item.bedroom} bedroom</span>
+            {/* Link to the correct properties route using the MongoDB _id */}
+            <Link to={`/properties/${item._id}`}>{item.title}</Link>
+            <span>{item.beds} bedroom</span>
             <b>$ {item.price}</b>
           </div>
         </div>

@@ -8,8 +8,9 @@ import Login from "./routes/login/login";
 import Register from "./routes/register/register";
 import CreatePage from "./routes/createPage/createPage";
 import RequireAuth from "./routes/layout/requireAuth";
-// This import is needed to make the "Update Profile" link work
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
+// 1. Import the AboutPage component
+import AboutPage from "./routes/aboutPage/AboutPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ function App() {
         { path: "/login", element: <Login /> },
         { path: "/register", element: <Register /> },
 
+        // --- THIS IS THE FIX ---
+        // 2. Add the new route for the About page
+        { path: "/about", element: <AboutPage /> },
+
         // --- PROTECTED ROUTES ---
         // These are guarded by the RequireAuth component
         {
@@ -32,7 +37,6 @@ function App() {
           children: [
             { path: "/profile", element: <ProfilePage /> },
             { path: "/create", element: <CreatePage /> },
-            // This route makes the link to the update page functional
             { path: "/profile/update", element: <ProfileUpdatePage /> },
           ],
         },

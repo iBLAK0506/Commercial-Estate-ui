@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../lib/apiClient";
-import UploadWidget from "../../components/uploadWidget/UploadWidget.jsx";
-import "./createPage.scss"; // Corrected stylesheet import
+import UploadWidget from "../../components/UploadWidget/UploadWidget.jsx";
+import "./createPage.scss";
 
 function CreatePage() {
   const [images, setImages] = useState([]);
@@ -26,7 +26,11 @@ function CreatePage() {
         baths: parseInt(data.baths),
         description: data.description,
         images: images,
-        // Add any other fields from your form here
+        latitude: data.latitude,
+        longitude: data.longitude,
+        type: data.type,
+        property: data.property,
+        sqft: parseInt(data.sqft),
       });
       // Navigate to the newly created property's page
       navigate("/properties/" + res.data.item._id);
@@ -65,6 +69,36 @@ function CreatePage() {
             <div className="item">
               <label htmlFor="baths">Bathroom Number</label>
               <input min={1} id="baths" name="baths" type="number" required />
+            </div>
+            <div className="item">
+              <label htmlFor="latitude">Latitude</label>
+              <input id="latitude" name="latitude" type="text" required />
+            </div>
+            <div className="item">
+              <label htmlFor="longitude">Longitude</label>
+              <input id="longitude" name="longitude" type="text" required />
+            </div>
+            <div className="item">
+              <label htmlFor="type">Type</label>
+              <select name="type">
+                <option value="buy" defaultChecked>
+                  Buy
+                </option>
+                <option value="rent">Rent</option>
+              </select>
+            </div>
+            <div className="item">
+              <label htmlFor="property">Property</label>
+              <select name="property">
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+                <option value="condo">Condo</option>
+                <option value="land">Land</option>
+              </select>
+            </div>
+            <div className="item">
+              <label htmlFor="sqft">Total Size (sqft)</label>
+              <input min={0} id="sqft" name="sqft" type="number" />
             </div>
             <div className="item description">
               <label htmlFor="description">Description</label>
