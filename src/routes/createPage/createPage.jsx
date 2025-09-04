@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../lib/apiClient";
-import UploadWidget from "../../components/UploadWidget/UploadWidget.jsx";
+import UploadWidget from "../../components/uploadWidget/uploadWidget.jsx";
 import "./createPage.scss";
 
 function CreatePage() {
